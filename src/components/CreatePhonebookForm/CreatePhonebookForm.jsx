@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import styles from './CreatePhonebookForm.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from '../../store/contactsSlice';
+// import { addContact } from '../../store/contactsSlice';
 import { nanoid } from 'nanoid';
 import { selectContacts } from 'store/selectors';
+import { addContacts } from 'store/contactsSlice';
 
 const CreatePhonebookForm = () => {
   const [name, setName] = useState('');
@@ -23,7 +24,7 @@ const CreatePhonebookForm = () => {
       return;
     }
 
-    dispatch(addContact({ id: nanoid(), name, number }));
+    dispatch(addContacts({ id: nanoid(), name, number }));
     setName('');
     setNumber('');
   };
