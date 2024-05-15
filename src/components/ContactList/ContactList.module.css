@@ -1,0 +1,12 @@
+.list {
+  padding: 0;
+  padding-left: 30px;
+}
+
+.item {
+  margin-bottom: 5px;
+}
+
+.buttonDelete {
+  margin-left: 10px;
+}
