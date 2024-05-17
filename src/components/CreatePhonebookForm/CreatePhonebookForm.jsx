@@ -23,6 +23,8 @@ const CreatePhonebookForm = () => {
       return;
     }
 
+    console.log({ name, number });
+
     dispatch(addContacts({ id: nanoid(), name, number }));
     setName('');
     setNumber('');

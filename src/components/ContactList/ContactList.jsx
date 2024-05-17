@@ -23,7 +23,7 @@ const ContactList = () => {
   };
 
   return (
-    <ul className={styles.contactList}>
+    <ul className={styles.list}>
       {filteredContacts.map(({ id, name, phone }) => (
         <li key={id} className={styles.item}>
           {name}: {phone}
