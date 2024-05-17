@@ -1,4 +1,3 @@
-import React from 'react';
 import CreatePhonebookForm from './CreatePhonebookForm/CreatePhonebookForm';
 import Filter from './Filter/Filter';
 import ContactList from './ContactList/ContactList';
