@@ -1,35 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from '../../store/contactsSlice';
-
 import styles from './ContactList.module.css';
 import { selectContacts, selectFilter } from 'store/selectors';
+import { deleteContact, fetchContacts } from 'store/operations';
 
 const ContactList = () => {
+  const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   const filter = useSelector(selectFilter);
-  const dispatch = useDispatch();
 
-  const filteredContacts = React.useMemo(
-    () =>
-      contacts.filter(contact =>
-        contact.name.toLowerCase().includes(filter.toLowerCase())
-      ),
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+  const filteredContacts = contacts.filter(
+    contact => contact.name.toLowerCase().includes(filter.toLowerCase()),
     [contacts, filter]
   );
 
-  const onDeleteContact = id => {
+  const handleDelete = id => {
     dispatch(deleteContact(id));
   };
 
   return (
-    <ul className={styles.list}>
-      {filteredContacts.map(contact => (
-        <li key={contact.id} className={styles.item}>
-          {contact.name}: {contact.number}
+    <ul className={styles.contactList}>
+      {filteredContacts.map(({ id, name, phone }) => (
+        <li key={id} className={styles.item}>
+          {name}: {phone}
           <button
             className={styles.buttonDelete}
-            onClick={() => onDeleteContact(contact.id)}
+            onClick={() => handleDelete(id)}
           >
             Delete
           </button>

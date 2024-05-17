@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import styles from './CreatePhonebookForm.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-// import { addContact } from '../../store/contactsSlice';
 import { nanoid } from 'nanoid';
 import { selectContacts } from 'store/selectors';
-import { addContacts } from 'store/contactsSlice';
+import { addContacts } from 'store/operations';
+import styles from './CreatePhonebookForm.module.css';
 
 const CreatePhonebookForm = () => {
   const [name, setName] = useState('');
